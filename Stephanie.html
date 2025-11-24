@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiche Personnage : Stéphanie Nadeau</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --accent: #c0392b; /* Rouge pour la passion/danger (ou une autre couleur qui lui correspond, j'ai mis rouge pour contraster avec le violet de Juan) */
+            --danger: #8e44ad; /* Violet pour le mystère/profondeur */
+            --light: #ecf0f1;
+            --dark: #1a1a1a;
+            --paper: #f4f4f4;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #555;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            -webkit-print-color-adjust: exact;
+        }
+
+        .page-container {
+            width: 1000px; 
+            min-height: 1414px; 
+            background-color: var(--paper);
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            overflow: hidden;
+        }
+
+        /* --- SIDEBAR (GAUCHE) --- */
+        .sidebar {
+            background-color: var(--primary);
+            color: var(--light);
+            padding: 25px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: left;
+            border-right: 5px solid var(--accent);
+        }
+
+        .profile-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 4px solid var(--accent);
+            margin-bottom: 15px;
+            background-color: #333;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        
+        .profile-photo img { width: 100%; height: 100%; object-fit: cover; }
+
+        .name-title { text-align: center; margin-bottom: 20px; }
+        .name-title h1 { font-size: 24px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; line-height: 1.2; }
+        .name-title h2 { font-size: 14px; font-weight: 300; color: var(--accent); font-style: italic; }
+
+        .stat-box {
+            width: 100%;
+            background: rgba(255,255,255,0.05);
+            padding: 10px 12px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            text-align: left;
+        }
+
+        .stat-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            color: #aaa;
+            margin-bottom: 3px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+
+        .stat-value { font-size: 13px; font-weight: normal; line-height: 1.3; }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .tag {
+            background-color: var(--dark);
+            color: var(--accent);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        /* --- MAIN CONTENT (DROITE) --- */
+        .main-content {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 8px;
+            margin-bottom: 12px;
+        }
+
+        .section-header i { font-size: 20px; color: var(--accent); margin-right: 12px; }
+        .section-header h3 { font-size: 18px; text-transform: uppercase; color: var(--primary); margin: 0; }
+
+        .content-text { font-size: 14px; line-height: 1.6; color: #333; text-align: justify; }
+        .subsection-title { font-weight: bold; color: var(--primary); margin-right: 5px; }
+
+        /* Cycle Visuel */
+        .cycle-container {
+            display: flex;
+            justify-content: space-between;
+            background-color: #e8e8e8;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            gap: 15px;
+        }
+
+        .cycle-step {
+            text-align: center;
+            flex: 1;
+            position: relative;
+            padding: 15px 10px;
+            background-color: #fdfdfd;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border-top: 3px solid transparent;
+        }
+
+        .cycle-step:nth-child(1) { border-top-color: var(--accent); }
+        .cycle-step:nth-child(2) { border-top-color: #e67e22; }
+        .cycle-step:nth-child(3) { border-top-color: var(--danger); }
+
+        .step-title { font-weight: bold; display: block; margin-bottom: 5px; text-transform: uppercase; font-size: 13px; color: var(--primary); }
+        .step-desc { font-size: 12px; color: #666; }
+
+        /* Impression */
+        @media print {
+            body { background-color: white; padding: 0; }
+            .page-container { box-shadow: none; width: 100%; height: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-container">
+        <!-- BARRE LATÉRALE -->
+        <aside class="sidebar">
+            <div class="profile-photo">
+                <!-- AJOUTER VOTRE IMAGE ICI -->
+                <img src="1000188088.jpg" alt="Stéphanie Nadeau">
+            </div>
+            
+            <div class="name-title">
+                <h1>Stéphanie<br>Nadeau</h1>
+                <h2>(Arielle Desabysses)</h2>
+            </div>
+
+            <div class="stat-box">
+                <div class="stat-label">Archétype</div>
+                <div class="stat-value" style="color: #e74c3c; font-weight:bold;">Le Paradoxe Lucide</div>
+            </div>
+
+            <div class="stat-box">
+                <div class="stat-label">Rôle Narratif</div>
+                <div class="stat-value">Protagoniste et Narratrice</div>
+            </div>
+
+            <div class="stat-box">
+                <div class="stat-label">Bagage</div>
+                <div class="stat-value">Exploitation, instabilité et abandon institutionnel à l'adolescence.</div>
+            </div>
+
+            <div class="stat-box">
+                <div class="stat-label">Neurodivergence</div>
+                <div class="stat-value">
+                    • TPL (Personnalité Limite)<br>
+                    • TSPT-C (Stress Post-Traumatique Complexe)<br>
+                    • TDAH (Type inattentif)<br>
+                    • Anxiété Sociale Sévère
+                </div>
+            </div>
+
+            <div class="stat-box">
+                <div class="stat-label">Mécanisme de Survie</div>
+                <div class="stat-value">L'écriture (ordonner le chaos).</div>
+            </div>
+
+            <div class="stat-box">
+                <div class="stat-label">Traits Principaux</div>
+                <div class="stat-value">Analytique, intense, passionnée, loyale, protectrice (tendance "Sauveuse").</div>
+            </div>
+
+            <div class="stat-box" style="border-left: 3px solid var(--accent);">
+                <div class="stat-label" style="color: var(--accent);">Objectif Conscient</div>
+                <div class="stat-value">Trouver un « refuge » humain, une relation qui la réparera.</div>
+            </div>
+
+            <div class="tags">
+                <span class="tag">#Auteure</span>
+                <span class="tag">#Résilience</span>
+                <span class="tag">#Analyse</span>
+                <span class="tag">#Survie</span>
+            </div>
+        </aside>
+
+        <!-- CONTENU PRINCIPAL -->
+        <main class="main-content">
+            
+            <!-- Section 1: Identité et Contexte -->
+            <div class="section">
+                <div class="section-header">
+                    <i class="fas fa-id-card"></i>
+                    <h3>Identité et Contexte</h3>
+                </div>
+                <p class="content-text">
+                    <span class="subsection-title">Double Identité :</span> Stéphanie (la femme vulnérable au quotidien) et Arielle (l'auteure analytique qui théorise son vécu).<br>
+                    Elle est le sujet de l'étude clinique, disséquant sa propre destruction pour trouver le chemin de la reconstruction. Son parcours est marqué par une adolescence difficile (exploitation, abandon), socle de sa condition psychologique actuelle.
+                </p>
+            </div>
+
+            <!-- Section 2: Psychologie et Mécanique Interne -->
+            <div class="section">
+                <div class="section-header">
+                    <i class="fas fa-brain"></i>
+                    <h3>Psychologie & Mécanique Interne</h3>
+                </div>
+                <p class="content-text">
+                    <span class="subsection-title">Conflit Majeur (Le Paradoxe de la Conscience) :</span> Elle possède une intelligence analytique hors norme lui permettant de comprendre ses schémas toxiques, mais reste impuissante face à la vague émotionnelle qui les déclenche. Elle regarde son propre naufrage en temps réel.<br><br>
+                    <span class="subsection-title">Style d'Attachement :</span> <strong>Désorganisé</strong>. Elle désire ardemment la connexion (pour se sauver) mais la redoute viscéralement (pour se protéger), créant un mouvement de va-et-vient épuisant.
+                </p>
+            </div>
+
+            <!-- Section 3: Dynamiques Relationnelles -->
+            <div class="section">
+                <div class="section-header">
+                    <i class="fas fa-users"></i>
+                    <h3>Dynamiques Relationnelles</h3>
+                </div>
+                <p class="content-text">
+                    <span class="subsection-title">Le Triangle de Karpman :</span> Son terrain de jeu involontaire. Elle entre en relation comme <strong>Sauveuse</strong> (créant une dépendance), se sent <strong>Victime</strong> quand l'investissement n'est pas retourné, et devient <strong>Persécutrice</strong> sous le coup de la frustration.<br><br>
+                    <span class="subsection-title">Le Sabotage Préventif :</span> La peur de l'abandon est si violente qu'elle préfère parfois provoquer la rupture (par des crises ou des tests) pour contrôler la fin inévitable plutôt que de la subir par surprise.
+                </p>
+            </div>
+
+            <!-- Section 4: Comportements Dysfonctionnels -->
+            <div class="section">
+                <div class="section-header">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <h3>Comportements (Mode Survie)</h3>
+                </div>
+                <div class="cycle-container">
+                    <div class="cycle-step">
+                        <span class="step-title">1. FUSION</span>
+                        <span class="step-desc">Love Bombing inversé, idéalisation rapide pour sécuriser le lien.</span>
+                    </div>
+                    <div class="cycle-step">
+                        <span class="step-title">2. CONTRÔLE</span>
+                        <span class="step-desc">Micro-gestion et jalousie pour apaiser l'anxiété.</span>
+                    </div>
+                    <div class="cycle-step">
+                        <span class="step-title">3. EXPLOSION</span>
+                        <span class="step-desc">Communication paradoxale (froideur clinique vs émotion brute).</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 5: Arc Narratif et Évolution -->
+            <div class="section">
+                <div class="section-header">
+                    <i class="fas fa-road"></i>
+                    <h3>Arc Narratif et Évolution</h3>
+                </div>
+                <p class="content-text">
+                    <span class="subsection-title">Vérité à Apprendre :</span> Personne ne peut la sauver d'elle-même. La sécurité ne vient pas d'un partenaire (le "Sauveur"), mais de sa propre capacité à tolérer l'inconfort et à réguler ses émotions.<br><br>
+                    <span class="subsection-title">Évolution :</span> Elle passe du statut de <strong>Victime</strong> de ses symptômes à celui d'<strong>Experte</strong> de sa résilience. Elle ne guérit pas en effaçant ses cicatrices, mais en apprenant à naviguer avec elles.
+                </p>
+            </div>
+
+        </main>
+    </div>
+
+</body>
+</html>
+
