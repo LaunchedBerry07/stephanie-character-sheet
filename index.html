@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fiche Personnage : Stéphanie Nadeau</title>
+    <title>Fiche Personnage : Stéphanie Nadeau (Mobile HD)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,274 +11,307 @@
     
     <style>
         :root {
-            --ink-black: #0a0a0a;
+            --ink-black: #0f0f0f;
             --paper-white: #f4f4f0;
-            --accent-gray: #d1d5db;
+            --slide-width: 1080px;
+            --slide-height: 1920px;
         }
 
         body {
+            background-color: #222;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+            padding: 40px 0;
+            margin: 0;
+            font-family: 'Special Elite', monospace;
+        }
+
+        /* Container styling for the 1080x1920 slides */
+        .slide {
+            width: var(--slide-width);
+            height: var(--slide-height);
             background-color: var(--paper-white);
             color: var(--ink-black);
-            font-family: 'Special Elite', monospace; /* Typewriter style */
-            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%239C92AC' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+            flex-shrink: 0;
+            /* Background Texture */
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7z' fill='%239C92AC' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
         }
 
-        h1, h2, h3 {
-            font-family: 'Permanent Marker', cursive;
-        }
+        /* Typography */
+        h1, h2, h3, .marker-font { font-family: 'Permanent Marker', cursive; }
+        .handwritten { font-family: 'Rock Salt', cursive; }
+        .body-text { font-family: 'Roboto Condensed', sans-serif; }
 
-        .handwritten {
-            font-family: 'Rock Salt', cursive;
-        }
-
-        .body-text {
-            font-family: 'Roboto Condensed', sans-serif;
-        }
-
+        /* Graphic Elements */
         .ink-border {
-            border: 3px solid var(--ink-black);
-            box-shadow: 5px 5px 0px 0px rgba(0,0,0,1);
-            transition: transform 0.2s;
-        }
-        
-        .ink-border:hover {
-            transform: translate(-2px, -2px);
-            box-shadow: 7px 7px 0px 0px rgba(0,0,0,1);
+            border: 4px solid var(--ink-black);
+            box-shadow: 8px 8px 0px 0px rgba(10,10,10,1);
         }
 
         .tape-effect {
-            background-color: rgba(255, 255, 255, 0.8);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-            transform: rotate(-2deg);
-            display: inline-block;
-            padding: 0.2rem 1rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .highlight-marker {
-            background: linear-gradient(100deg, rgba(255,255,0,0) 0%, rgba(255,255,0,0.4) 4%, rgba(255,255,0,0.2) 100%);
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
+        .highlight-yellow {
+            background: linear-gradient(120deg, rgba(255,255,0,0) 0%, rgba(255,235,59,0.5) 10%, rgba(255,255,0,0) 100%);
+            background-size: 100% 40%;
+            background-position: 0 80%;
+            background-repeat: no-repeat;
+        }
+
+        /* Auto-scaling script helper class */
+        .scaled-wrapper {
+            transform-origin: top center;
+        }
     </style>
 </head>
-<body class="p-4 md:p-8 min-h-screen">
+<body>
 
-    <!-- Main Container -->
-    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8">
-
-        <!-- HEADER / IDENTITY SECTION (Left Column on large screens) -->
-        <div class="lg:col-span-4 space-y-6">
+    <!-- SCRIPT TO SCALE THE SLIDES TO FIT SCREEN -->
+    <script>
+        function scaleSlides() {
+            const slides = document.querySelectorAll('.slide');
+            const wrapper = document.getElementById('slide-wrapper');
+            const windowWidth = window.innerWidth;
+            const slideWidth = 1080;
+            // Add some margin
+            const scale = Math.min(1, (windowWidth - 40) / slideWidth);
             
-            <!-- Profile Card -->
-            <div class="ink-border bg-white p-4 relative overflow-hidden group">
-                <div class="absolute top-0 right-0 p-2 z-10">
-                    <span class="tape-effect font-bold text-lg uppercase tracking-widest text-purple-800 transform rotate-3">Paradoxe Lucide</span>
+            wrapper.style.transform = `scale(${scale})`;
+            // Adjust height of container to match scaled content
+            wrapper.style.height = `${(1920 * scale * slides.length) + (40 * slides.length)}px`;
+        }
+        window.addEventListener('resize', scaleSlides);
+        window.addEventListener('DOMContentLoaded', scaleSlides);
+    </script>
+
+    <div id="slide-wrapper" class="scaled-wrapper flex flex-col gap-10">
+
+        <!-- ======================= SLIDE 1: IDENTITÉ & BAGAGE ======================= -->
+        <div class="slide p-12 flex flex-col justify-between">
+            
+            <!-- Header -->
+            <div class="relative">
+                <div class="absolute top-0 right-0 z-10 transform rotate-3">
+                    <span class="tape-effect px-6 py-2 text-2xl font-bold text-purple-900 border border-gray-300">
+                        ARCHÉTYPE: Le Paradoxe Lucide
+                    </span>
                 </div>
                 
-                <div class="aspect-[4/5] w-full bg-gray-200 mb-4 overflow-hidden border-2 border-black">
-                    <!-- IMAGE PLACEHOLDER -->
-                    <img src="Gemini_Generated_Image_f67n8vf67n8vf67n.png" 
-                         alt="Stéphanie Nadeau" 
-                         class="w-full h-full object-cover grayscale contrast-125 hover:grayscale-0 transition-all duration-500"
-                         onerror="this.src='https://placehold.co/400x500/1a1a1a/FFF?text=Stéphanie'; this.style.filter='none';">
-                </div>
-
-                <h1 class="text-4xl text-center leading-none mb-1 transform -rotate-1">STÉPHANIE<br><span class="text-2xl block mt-2">NADEAU</span></h1>
+                <h1 class="text-8xl leading-none mb-2 mt-4 transform -rotate-1">STÉPHANIE<br><span class="text-6xl text-gray-700 ml-2">NADEAU</span></h1>
                 
-                <div class="mt-6 space-y-4">
-                    <div class="bg-black text-white p-2 transform -skew-x-2">
-                        <p class="font-bold uppercase text-sm">Bagage</p>
-                        <p class="body-text text-lg">Instabilité, abandons et exploitation sexuelle à l'adolescence</p>
-                    </div>
-
-                    <div class="border-t-2 border-dashed border-black pt-2">
-                        <p class="font-bold uppercase text-sm mb-1">Neurodivergence</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-gray-200 px-2 py-1 text-xs font-bold border border-black">TPL</span>
-                            <span class="bg-gray-200 px-2 py-1 text-xs font-bold border border-black">TSPT-C</span>
-                            <span class="bg-gray-200 px-2 py-1 text-xs font-bold border border-black">TDAH (Inattentif)</span>
-                            <span class="bg-gray-200 px-2 py-1 text-xs font-bold border border-black">ANXIÉTÉ SOCIALE</span>
-                            <span class="bg-gray-800 text-white px-2 py-1 text-xs font-bold border border-black">DÉPRESSION MAJEURE</span>
+                <!-- Double Identity Box -->
+                <div class="mt-8 bg-black text-white p-6 transform -skew-x-2 border-l-8 border-yellow-400">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <p class="text-gray-400 text-sm uppercase tracking-widest mb-1">Identité Quotidienne</p>
+                            <p class="text-3xl font-bold">Stéphanie</p>
+                            <p class="italic text-sm text-gray-400">La femme vulnérable</p>
+                        </div>
+                        <div class="text-4xl text-yellow-400">↔</div>
+                        <div class="text-right">
+                             <p class="text-gray-400 text-sm uppercase tracking-widest mb-1">Identité Auteure</p>
+                            <p class="text-3xl font-bold handwritten text-yellow-200">Arielle Desabysses</p>
+                            <p class="italic text-sm text-gray-400">L'analyste qui théorise</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Traits Card -->
-            <div class="ink-border bg-white p-6">
-                <h2 class="text-2xl mb-4 border-b-4 border-black inline-block">Mécanique Interne</h2>
-                
-                <div class="grid grid-cols-1 gap-4">
-                    <div>
-                        <h3 class="handwritten text-lg text-green-700">Forces</h3>
-                        <p class="body-text text-lg leading-tight">Créativité, perspective, pardon, curiosité, gentillesse et intelligence sociale.</p>
-                    </div>
-                    <div>
-                        <h3 class="handwritten text-lg text-blue-700">Mécanisme de survie</h3>
-                        <p class="body-text text-lg leading-tight font-bold">L'écriture</p>
-                        <p class="text-sm italic">(Ordonner le chaos mental)</p>
-                    </div>
-                    <div class="bg-yellow-50 p-2 border border-yellow-200">
-                        <h3 class="handwritten text-lg">Style d'Attachement</h3>
-                        <p class="body-text text-xl font-bold">Désorganisé</p>
-                        <p class="text-sm">(Craintif-Évitant)</p>
-                        <p class="text-xs italic mt-1">Désire la connexion, mais la redoute.</p>
-                    </div>
-                    <div>
-                        <h3 class="handwritten text-lg">Motivation / Peur</h3>
-                        <p class="body-text text-lg leading-tight">Désir une connexion stable et sécurisante, mais sabote les relations par peur de l'abandon.</p>
-                    </div>
+            <!-- Image -->
+            <div class="ink-border bg-white p-4 mx-4 my-6 rotate-1">
+                <div class="w-full aspect-square overflow-hidden bg-gray-200 border-2 border-black relative">
+                     <img src="Gemini_Generated_Image_f67n8vf67n8vf67n.png" 
+                         alt="Stéphanie Nadeau" 
+                         class="w-full h-full object-cover grayscale contrast-125"
+                         onerror="this.src='https://placehold.co/1000x1000/1a1a1a/FFF?text=PHOTO+STÉPHANIE';">
                 </div>
             </div>
 
-            <!-- Double Identité (Replacing Apparence) -->
-            <div class="ink-border bg-black text-white p-6 transform rotate-1">
-                <h2 class="text-2xl mb-2 text-white border-b border-white inline-block">Double Identité</h2>
-                <div class="grid grid-cols-2 gap-4 mt-2">
-                    <div class="text-center">
-                        <span class="block text-gray-400 text-xs uppercase">Au Quotidien</span>
-                        <span class="handwritten text-xl text-yellow-200">Stéphanie</span>
-                        <span class="block text-xs mt-1">La femme vulnérable</span>
-                    </div>
-                    <div class="text-center border-l border-white">
-                        <span class="block text-gray-400 text-xs uppercase">L'Auteure</span>
-                        <span class="handwritten text-xl text-yellow-200">Arielle Desabysses</span>
-                         <span class="block text-xs mt-1">L'analyste qui théorise</span>
+            <!-- Bagage & Neuro -->
+            <div class="space-y-8">
+                <div class="bg-gray-100 p-6 border-l-8 border-black shadow-lg">
+                    <h2 class="text-4xl mb-2">Bagage</h2>
+                    <p class="body-text text-3xl">Instabilité, abandons et exploitation sexuelle à l'adolescence.</p>
+                </div>
+
+                <div class="ink-border bg-white p-8">
+                    <h2 class="text-4xl mb-6 border-b-4 border-black inline-block">Neurodivergence</h2>
+                    <div class="flex flex-wrap gap-4">
+                        <span class="bg-black text-white px-4 py-2 text-2xl font-bold">TPL</span>
+                        <span class="bg-gray-200 text-black px-4 py-2 text-2xl font-bold border-2 border-black">TSPT-C</span>
+                        <span class="bg-gray-200 text-black px-4 py-2 text-2xl font-bold border-2 border-black">TDAH (Inattentif)</span>
+                        <span class="bg-gray-200 text-black px-4 py-2 text-2xl font-bold border-2 border-black">Anxiété Sociale</span>
+                        <span class="bg-red-700 text-white px-4 py-2 text-2xl font-bold border-2 border-black animate-pulse">Épisodes dépressifs majeurs</span>
                     </div>
                 </div>
             </div>
-
-             <!-- Quotes -->
-             <div class="p-4 text-center space-y-6">
-                <blockquote class="handwritten text-lg leading-relaxed">
-                    "Elle regarde son propre naufrage en temps réel."
-                </blockquote>
-                <blockquote class="font-bold text-2xl uppercase tracking-widest border-y-4 border-black py-2">
-                    Paradoxe de la Conscience
-                </blockquote>
+            
+            <!-- Footer decoration -->
+            <div class="text-center mt-4">
+                <span class="handwritten text-2xl text-gray-400">1 / 3</span>
             </div>
-
         </div>
 
-        <!-- MAIN CONTENT (Right Column) -->
-        <div class="lg:col-span-8 space-y-8">
 
-            <!-- Narrative Role -->
-            <div class="ink-border bg-white p-6 md:p-8 relative">
-                <div class="absolute -top-3 -left-3 bg-black text-white px-4 py-1 font-bold transform -rotate-2">NARRATION</div>
+        <!-- ======================= SLIDE 2: PSYCHOLOGIE ======================= -->
+        <div class="slide p-12 flex flex-col">
+            
+            <h2 class="text-6xl text-center mb-12 border-b-8 border-black pb-4">MÉCANIQUE INTERNE</h2>
+
+            <div class="flex-grow space-y-10">
                 
-                <div class="mt-4 mb-4">
-                     <p class="text-xl font-bold font-serif mb-2">Rôle Narratif : <span class="text-2xl font-normal border-b-2 border-black">Protagoniste & Narratrice</span></p>
-                     <p class="body-text italic">Elle est le sujet de l'étude clinique, disséquant sa propre destruction pour trouver le chemin de la reconstruction.</p>
-                </div>
-
-                <div class="grid md:grid-cols-2 gap-8 mt-6">
-                    <div class="space-y-2">
-                        <h3 class="text-xl border-b-2 border-gray-300">Vérité à Apprendre</h3>
-                        <p class="body-text text-justify">
-                            <span class="font-bold">Personne ne peut la sauver d'elle-même.</span> La sécurité ne vient pas d'un partenaire (le "Sauveur"), mais de sa propre capacité à tolérer l'inconfort et à réguler ses émotions.
-                        </p>
-                    </div>
-                    <div class="space-y-2">
-                        <h3 class="text-xl border-b-2 border-gray-300">Évolution</h3>
-                        <p class="body-text text-justify">
-                             Elle passe du statut de <span class="font-bold text-red-700">Victime</span> de ses symptômes à celui d'<span class="font-bold text-green-700">Experte</span> de sa résilience. Elle ne guérit pas en effaçant ses cicatrices, mais en apprenant à naviguer avec elles.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Psychology Deep Dive -->
-            <div class="ink-border bg-white p-6 md:p-8">
-                <h2 class="text-3xl mb-6">Psychologie & Personnalité</h2>
-                
-                <div class="space-y-4 mb-8">
-                     <div class="flex flex-col md:flex-row gap-4 border-b border-gray-200 pb-4">
-                        <div class="w-full md:w-1/3 font-bold uppercase text-sm pt-1">Analytique & Articulée</div>
-                        <div class="w-full md:w-2/3 body-text">Capacité à verbaliser des concepts psychologiques complexes. Communications méticuleuses, empreintes d'auto-analyse.</div>
+                <!-- Main Traits -->
+                <div class="grid grid-cols-1 gap-8">
+                    <div class="flex items-start gap-6">
+                        <div class="bg-black text-white p-2 w-16 text-center text-2xl font-bold mt-1">A</div>
+                        <div>
+                            <h3 class="text-3xl mb-1">Analytique & Articulée</h3>
+                            <p class="body-text text-2xl text-gray-700 leading-snug">Capacité à verbaliser des concepts psychologiques complexes. Communications méticuleuses, empreintes d'auto-analyse.</p>
+                        </div>
                     </div>
                     
-                    <div class="flex flex-col md:flex-row gap-4 border-b border-gray-200 pb-4">
-                        <div class="w-full md:w-1/3 font-bold uppercase text-sm pt-1">Intense & Passionnée</div>
-                        <div class="w-full md:w-2/3 body-text">Vit et exprime ses émotions sans filtre, que ce soit dans l'amour, la déception ou la colère.</div>
+                    <div class="flex items-start gap-6">
+                        <div class="bg-black text-white p-2 w-16 text-center text-2xl font-bold mt-1">B</div>
+                        <div>
+                            <h3 class="text-3xl mb-1">Intense & Passionnée</h3>
+                            <p class="body-text text-2xl text-gray-700 leading-snug">Vit et exprime ses émotions sans filtre, que ce soit dans l'amour, la déception ou la colère.</p>
+                        </div>
                     </div>
 
-                    <div class="flex flex-col md:flex-row gap-4 border-b border-gray-200 pb-4">
-                        <div class="w-full md:w-1/3 font-bold uppercase text-sm pt-1">Protectrice (Sauveuse)</div>
-                        <div class="w-full md:w-2/3 body-text">Se sent valorisée lorsqu'elle peut aider. S'investit corps et âme pour régler les problèmes de son partenaire, créant une dépendance.</div>
-                    </div>
-                    
-                    <div class="flex flex-col md:flex-row gap-4 border-b border-gray-200 pb-4">
-                        <div class="w-full md:w-1/3 font-bold uppercase text-sm pt-1">Anxieuse Sociale</div>
-                        <div class="w-full md:w-2/3 body-text">Craint le jugement et le rejet, ce qui la pousse à l'isolement.</div>
-                    </div>
-
-                    <div class="flex flex-col md:flex-row gap-4 border-b border-gray-200 pb-4">
-                        <div class="w-full md:w-1/3 font-bold uppercase text-sm pt-1">Fidèle</div>
-                        <div class="w-full md:w-2/3 body-text">D'une loyauté féroce envers ceux qu'elle aime, même lorsque la relation est devenue néfaste pour elle.</div>
+                     <div class="flex items-start gap-6">
+                        <div class="bg-black text-white p-2 w-16 text-center text-2xl font-bold mt-1">C</div>
+                        <div>
+                            <h3 class="text-3xl mb-1">Protectrice (Sauveuse)</h3>
+                            <p class="body-text text-2xl text-gray-700 leading-snug">S'investit corps et âme pour régler les problèmes de son partenaire, créant une dépendance.</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="bg-gray-100 p-4 border-l-4 border-black">
-                     <h3 class="font-bold uppercase text-sm mb-2">Conflit Majeur : Le Paradoxe de la Conscience</h3>
-                     <p class="body-text text-lg">Elle possède une intelligence analytique lui permettant de comprendre ses schémas toxiques avec une précision clinique, mais reste impuissante face à la vague émotionnelle. Sa lucidité ne fait qu'accentuer la douleur.</p>
+                <!-- Split Traits (Correction) -->
+                <div class="grid grid-cols-2 gap-8 pt-4">
+                    <div class="ink-border bg-gray-50 p-6">
+                        <h3 class="text-2xl text-red-800 mb-2">Anxieuse Sociale</h3>
+                        <p class="body-text text-xl">Craint le jugement et le rejet, ce qui la pousse à l'isolement.</p>
+                    </div>
+                    <div class="ink-border bg-gray-50 p-6">
+                         <h3 class="text-2xl text-green-800 mb-2">Fidèle</h3>
+                        <p class="body-text text-xl">Loyauté féroce envers ceux qu'elle aime, même si la relation est néfaste.</p>
+                    </div>
                 </div>
+
+                <!-- Forces / Mecanisme -->
+                <div class="bg-white p-8 border-4 border-dashed border-gray-400 mt-8 relative">
+                    <span class="absolute -top-4 left-8 bg-white px-2 font-bold text-xl uppercase text-gray-500">Ressources</span>
+                    <div class="grid grid-cols-2 gap-12">
+                         <div>
+                            <h4 class="handwritten text-2xl mb-2 underline decoration-wavy decoration-green-500">Forces</h4>
+                            <p class="body-text text-2xl">Créativité, perspective, pardon, curiosité, gentillesse, intelligence sociale.</p>
+                        </div>
+                        <div>
+                            <h4 class="handwritten text-2xl mb-2 underline decoration-wavy decoration-blue-500">Survie</h4>
+                            <p class="body-text text-2xl font-bold">L'ÉCRITURE</p>
+                            <p class="body-text text-xl italic">(Ordonner le chaos mental)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Big Quote -->
+                <div class="mt-12 text-center relative py-10">
+                     <span class="text-9xl absolute top-0 left-0 opacity-20 font-serif">"</span>
+                     <p class="handwritten text-4xl leading-relaxed text-gray-800 transform -rotate-2">
+                        Elle regarde son propre naufrage en temps réel. Sa lucidité ne fait qu'accentuer la douleur.
+                    </p>
+                     <span class="text-9xl absolute bottom-0 right-0 opacity-20 font-serif">"</span>
+                     <p class="font-bold uppercase tracking-widest mt-6 text-xl text-red-700">— Le Paradoxe de la Conscience</p>
+                </div>
+
             </div>
-
-            <!-- Behavioral Cycle (Study Case: Frank) -->
-            <div class="bg-black text-white p-2 text-center uppercase font-bold tracking-widest text-xs">Comportements Dysfonctionnels (Étude de Cas: Frank)</div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
-                <div class="ink-border bg-white p-4 transform hover:-translate-y-1 transition-transform">
-                    <div class="text-4xl font-bold mb-2 text-red-600">1</div>
-                    <h3 class="handwritten text-xl mb-2">Fusion</h3>
-                    <p class="body-text text-sm"><span class="font-bold">Love Bombing inversé.</span> Idéalisation rapide pour sécuriser le lien.</p>
-                </div>
-                <div class="ink-border bg-white p-4 transform hover:-translate-y-1 transition-transform">
-                     <div class="text-4xl font-bold mb-2 text-red-600">2</div>
-                    <h3 class="handwritten text-xl mb-2">Contrôle</h3>
-                    <p class="body-text text-sm">Micro-gestion et jalousie pour apaiser l'anxiété.</p>
-                </div>
-                <div class="ink-border bg-gray-800 text-white p-4 transform hover:-translate-y-1 transition-transform">
-                     <div class="text-4xl font-bold mb-2 text-red-600">3</div>
-                    <h3 class="handwritten text-xl mb-2">Explosion</h3>
-                    <p class="body-text text-sm">Communication paradoxale (froideur clinique vs émotion brute).</p>
-                </div>
+             <div class="text-center mt-4">
+                <span class="handwritten text-2xl text-gray-400">2 / 3</span>
             </div>
-
-            <!-- Dynamics Section (Simplified, No Timeline Visuals) -->
-            <div class="ink-border bg-white p-6 md:p-8">
-                <h2 class="text-3xl mb-6 border-b-4 border-black inline-block">Dynamiques Relationnelles</h2>
-                <div class="grid md:grid-cols-2 gap-8">
-                    
-                    <div class="bg-gray-50 p-4 border border-gray-300 shadow-sm">
-                        <h4 class="text-xl font-bold mb-2 uppercase tracking-wide">Le Triangle de Karpman</h4>
-                        <p class="body-text text-justify">
-                            Elle entre en relation comme <span class="highlight-marker font-bold">Sauveuse</span> pour créer une dépendance, 
-                            se sent <span class="highlight-marker font-bold">Victime</span> quand l'investissement n'est pas retourné, 
-                            et devient <span class="highlight-marker font-bold">Persécutrice</span> sous le coup de la frustration.
-                        </p>
-                    </div>
-
-                    <div class="bg-gray-50 p-4 border border-gray-300 shadow-sm">
-                        <h4 class="text-xl font-bold mb-2 uppercase tracking-wide">Le Sabotage Préventif</h4>
-                        <p class="body-text text-justify">
-                            La peur de l'abandon est si violente qu'elle préfère parfois provoquer la rupture (par des crises ou des tests) 
-                            pour contrôler la fin inévitable plutôt que de la subir par surprise.
-                        </p>
-                    </div>
-
-                </div>
-            </div>
-
         </div>
-    </div>
-    
-    <!-- Footer/Copyright texture -->
-    <div class="fixed bottom-4 right-4 opacity-50 pointer-events-none transform rotate-180">
-        <svg width="100" height="100" viewBox="0 0 100 100">
-             <path d="M10,50 Q25,25 40,50 T70,50 T100,50" fill="none" stroke="black" stroke-width="2" />
-        </svg>
-    </div>
 
+        <!-- ======================= SLIDE 3: DYNAMIQUES & NARRATION ======================= -->
+        <div class="slide p-12 flex flex-col">
+            
+            <!-- Attachment Style (Highlighted) -->
+            <div class="bg-black text-white p-8 mb-10 text-center transform rotate-1 shadow-xl border-4 border-white outline outline-4 outline-black">
+                <h3 class="uppercase tracking-[0.3em] text-xl mb-2 text-gray-300">Style d'Attachement</h3>
+                <p class="marker-font text-6xl text-yellow-400 mb-2">DÉSORGANISÉ</p>
+                <p class="text-2xl font-bold mb-4">(Craintif - Évitant)</p>
+                <p class="body-text text-2xl italic px-10">"Elle désire ardemment la connexion pour se réparer, mais la redoute viscéralement pour se protéger."</p>
+            </div>
+
+            <!-- Dynamics -->
+            <div class="ink-border bg-white p-8 mb-8">
+                <h2 class="text-4xl mb-6">Dynamiques Relationnelles</h2>
+                
+                <div class="mb-8">
+                    <h3 class="text-2xl font-bold bg-gray-200 inline-block px-2 mb-2">LE TRIANGLE DE KARPMAN</h3>
+                    <p class="body-text text-2xl text-justify leading-relaxed">
+                        Elle entre comme <span class="font-bold text-green-700">Sauveuse</span> (créer la dépendance) ➔ 
+                        Se sent <span class="font-bold text-blue-700">Victime</span> (investissement non retourné) ➔ 
+                        Devient <span class="font-bold text-red-700">Persécutrice</span> (frustration).
+                    </p>
+                </div>
+
+                <div>
+                     <h3 class="text-2xl font-bold bg-gray-200 inline-block px-2 mb-2">LE SABOTAGE PRÉVENTIF</h3>
+                     <p class="body-text text-2xl text-justify leading-relaxed">
+                        Provoquer la rupture (crises/tests) pour contrôler la fin inévitable plutôt que de la subir par surprise.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Frank Case Study -->
+            <div class="bg-gray-100 p-8 border-t-4 border-b-4 border-black mb-8">
+                 <h3 class="text-center font-bold text-xl uppercase mb-6 tracking-widest text-gray-500">Étude de Cas : Frank</h3>
+                 <div class="flex justify-between text-center gap-4">
+                     <div class="flex-1">
+                         <div class="text-5xl font-bold text-gray-300 mb-2">1</div>
+                         <h4 class="handwritten text-xl font-bold">FUSION</h4>
+                         <p class="body-text text-lg">Love Bombing inversé</p>
+                     </div>
+                     <div class="flex-1 border-l border-r border-gray-300 px-2">
+                         <div class="text-5xl font-bold text-gray-300 mb-2">2</div>
+                         <h4 class="handwritten text-xl font-bold">CONTRÔLE</h4>
+                         <p class="body-text text-lg">Jalousie & Micro-gestion</p>
+                     </div>
+                     <div class="flex-1">
+                         <div class="text-5xl font-bold text-gray-300 mb-2">3</div>
+                         <h4 class="handwritten text-xl font-bold">EXPLOSION</h4>
+                         <p class="body-text text-lg">Froideur vs Émotion</p>
+                     </div>
+                 </div>
+            </div>
+
+            <!-- Narrative Arc -->
+            <div class="mt-auto bg-white border-2 border-black p-6 relative">
+                 <div class="absolute -top-3 left-6 bg-black text-white px-4 py-1 text-sm font-bold uppercase transform -rotate-1">Évolution Narrative</div>
+                 <div class="mt-4 space-y-4">
+                     <div>
+                         <span class="font-bold text-xl underline decoration-2 decoration-red-500">La Vérité :</span>
+                         <span class="body-text text-2xl"> Personne ne peut la sauver d'elle-même. La sécurité ne vient pas d'un Sauveur.</span>
+                     </div>
+                     <div>
+                         <span class="font-bold text-xl underline decoration-2 decoration-green-500">L'Arc :</span>
+                         <span class="body-text text-2xl"> De <span class="font-bold">Victime</span> de ses symptômes à <span class="font-bold">Experte</span> de sa résilience.</span>
+                     </div>
+                 </div>
+            </div>
+
+             <div class="text-center mt-6">
+                <span class="handwritten text-2xl text-gray-400">3 / 3</span>
+            </div>
+        </div>
+
+    </div>
 </body>
 </html>
